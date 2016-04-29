@@ -23,8 +23,8 @@ defmodule Alexa.PageController do
     "version" => "1.0",
     "response" => %{
       "outputSpeech" => %{
-        "type" => "PlainText",
-        "text" => "Elixir is awesome, but you are more awesome.",
+        "type" => "SSML",
+        "text" => "<speak><s>This is a sentence</s> What's up dude. I gotta spend my weekend learning more elixir!</speak>",
       },
       "shouldEndSession" => true
      }
