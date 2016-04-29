@@ -1,0 +1,13 @@
+{application,alexa,
+             [{registered,[]},
+              {description,"alexa"},
+              {vsn,"0.0.1"},
+              {modules,['Elixir.Alexa','Elixir.Alexa.Endpoint',
+                        'Elixir.Alexa.ErrorHelpers','Elixir.Alexa.ErrorView',
+                        'Elixir.Alexa.Gettext','Elixir.Alexa.LayoutView',
+                        'Elixir.Alexa.PageController','Elixir.Alexa.PageView',
+                        'Elixir.Alexa.Router','Elixir.Alexa.Router.Helpers',
+                        'Elixir.Alexa.UserSocket','Elixir.Alexa.Web']},
+              {mod,{'Elixir.Alexa',[]}},
+              {applications,[kernel,stdlib,elixir,ssl,phoenix,phoenix_html,
+                             cowboy,logger,gettext]}]}.
