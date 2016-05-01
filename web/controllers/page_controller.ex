@@ -14,7 +14,10 @@ defmodule Alexa.PageController do
               "text" => "Who is going to win? The Royals are going to win!  The Bulldogs are going to win!  Have fun playing baseball boys.",
             },
             "shouldEndSession" => true
-           }
+        }
+    }
+  end
+
   def process_request(conn, %{"request" => %{"intent" => %{"name" => "FavoriteBand"}}}) do
     %{
 	  "version" => "1.0",
