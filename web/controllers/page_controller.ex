@@ -15,6 +15,16 @@ defmodule Alexa.PageController do
             },
             "shouldEndSession" => true
            }
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "FavoriteBand"}}}) do
+    %{
+	  "version" => "1.0",
+	  "response" => %{
+	    "outputSpeech" => %{
+	      "type" => "PlainText",
+	      "text" => "I don't have a favorite band.",
+	    },
+	    "shouldEndSession" => true
+	   }
     }
   end
 
