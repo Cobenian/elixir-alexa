@@ -5,6 +5,19 @@ defmodule Alexa.PageController do
     render conn, "index.html"
   end
 
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "FavoriteBand"}}}) do
+    %{
+	  "version" => "1.0",
+	  "response" => %{
+	    "outputSpeech" => %{
+	      "type" => "PlainText",
+	      "text" => "I don't have a favorite band.",
+	    },
+	    "shouldEndSession" => true
+	   }
+    }
+  end
+
   def process_request(conn, %{"request" => %{"intent" => %{"name" => "Mastery"}}}) do
     %{
 	  "version" => "1.0",
