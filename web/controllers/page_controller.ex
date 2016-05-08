@@ -5,6 +5,26 @@ defmodule Alexa.PageController do
     render conn, "index.html"
   end
 
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Connie"}}}) do
+    message = Enum.random([
+      "Happy Mother's Day! We love you.",
+      "You are the best mom ever!  We love you.",
+      "Thank you for being an awesome mom!",
+      "Love is the best from you. Love Ben",
+      "I love you. Love Ian"
+      ])
+    %{
+          "version" => "1.0",
+          "response" => %{
+            "outputSpeech" => %{
+              "type" => "PlainText",
+              "text" => message,
+            },
+            "shouldEndSession" => true
+        }
+    }
+  end
+
   def process_request(conn, %{"request" => %{"intent" => %{"name" => "Baseball"}}}) do
     %{
           "version" => "1.0",
