@@ -18,7 +18,7 @@ defmodule Alexa.PageController do
     }
   end
 
-  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Empex", "slots" => %{"ProgLang" => %{"name" => "ProgLang", "value" => prog_lang},}}}) do
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Empex", "slots" => %{"ProgLang" => %{"name" => "ProgLang", "value" => prog_lang}}}}}) do
     "Really, you like programming in #{prog_lang}? I always use Elixir myself."
     |> json_for_message
   end
