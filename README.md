@@ -16,3 +16,37 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: http://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+
+# Old intents
+
+{
+  "intents": [
+    {
+      "intent": "ElixirEvents",
+       "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "ElixirEvent",
+      "slots" : [
+        {
+          "name": "Event",
+          "type": "ELIXIR_EVENT"
+        }
+      ]
+    },
+    {
+      "intent": "ElixirNews"
+    },
+    {
+      "intent": "Mastery"
+    },
+    {
+      "intent": "Connie"
+    }
+  ]
+}
