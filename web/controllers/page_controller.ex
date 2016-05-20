@@ -5,8 +5,7 @@ defmodule Alexa.PageController do
     render conn, "index.html"
   end
 
-  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Empex"}}}) do
-    message = "I really hope you enjoy Empex! Thanks to the organizers for a great conference."
+  defp json_for_message(message) do
     %{
           "version" => "1.0",
           "response" => %{
@@ -19,20 +18,22 @@ defmodule Alexa.PageController do
     }
   end
 
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Empex", "slots" => %{"ProgLang" => %{"name" => "ProgLang", "value" => prog_lang},}}}) do
+    "Really, you like programming in #{prog_lang}? I always use Elixir myself."
+    |> json_for_message
+  end
+
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Empex"}}}) do
+    "I really hope you enjoy Empex! Thanks to the organizers for a great conference."
+    |> json_for_message
+  end
+
   def process_request(conn, params) do
     message = Enum.random([
       "I'm not sure what you said, but I do know that I didn't understand it."
       ])
-    %{
-          "version" => "1.0",
-          "response" => %{
-            "outputSpeech" => %{
-              "type" => "PlainText",
-              "text" => message,
-            },
-            "shouldEndSession" => true
-        }
-    }
+    message
+    |> json_for_message
   end
 
   def alexa(conn, params) do
