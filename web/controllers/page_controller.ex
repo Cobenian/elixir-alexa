@@ -5,14 +5,7 @@ defmodule Alexa.PageController do
     render conn, "index.html"
   end
 
-  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Connie"}}}) do
-    message = Enum.random([
-      "Happy Mother's Day! We love you.",
-      "You are the best mom ever!  We love you.",
-      "Thank you for being an awesome mom!",
-      "Love is the best from you. Love Ben",
-      "I love you. Love Ian"
-      ])
+  def make_response(message, end_session \\ true) do
     %{
           "version" => "1.0",
           "response" => %{
@@ -20,81 +13,31 @@ defmodule Alexa.PageController do
               "type" => "PlainText",
               "text" => message,
             },
-            "shouldEndSession" => true
+            "shouldEndSession" => end_session
         }
     }
   end
 
   def process_request(conn, %{"request" => %{"intent" => %{"name" => "Baseball"}}}) do
-    %{
-          "version" => "1.0",
-          "response" => %{
-            "outputSpeech" => %{
-              "type" => "PlainText",
-              "text" => "Who is going to win? The Royals are going to win!  The Bulldogs are going to win!  Have fun playing baseball boys.",
-            },
-            "shouldEndSession" => true
-        }
-    }
-  end
-
-  def process_request(conn, %{"request" => %{"intent" => %{"name" => "FavoriteBand", "slots" => %{"Band" => %{"name" => "Band", "value" => band_name}}}}}) do
-    %{
-	  "version" => "1.0",
-	  "response" => %{
-	    "outputSpeech" => %{
-	      "type" => "PlainText",
-	      "text" => "My favorite band is " <> band_name <> "!",
-	    },
-	    "shouldEndSession" => true
-	   }
-    }
-  end
-
-  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Mastery"}}}) do
-    %{
-	  "version" => "1.0",
-	  "response" => %{
-	    "outputSpeech" => %{
-	      "type" => "PlainText",
-	      "text" => "Elixir is awesome",
-	    },
-	    "shouldEndSession" => true
-	   }
-    }
-  end
-
-  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Ivan"}}}) do
-    %{
-    "version" => "1.0",
-    "response" => %{
-      "outputSpeech" => %{
-        "type" => "SSML",
-        "ssml" => "<speak><s>This is a sentence</s> What's up dude. I gotta spend my weekend learning more elixir!</speak>",
-      },
-      "shouldEndSession" => true
-     }
-    }
-  end
-
-  def process_request(conn, params) do
-    message = Enum.random([
-      "Happy Mother's Day! We love you.",
-      "You are the best mom ever!  We love you.",
-      "Thank you for being an awesome mom!",
-      "Love is the best from you. Love Ben",
-      "I love you. Love Ian"
+    Enum.random([
+        "My kids love playing baseball.",
+        "Do you think the Cubs can win the World Series?",
+        "108 years is a long time!",
+        "Are you a Nationals fan?",
       ])
-    %{
-          "version" => "1.0",
-          "response" => %{
-            "outputSpeech" => %{
-              "type" => "PlainText",
-              "text" => message,
-            },
-            "shouldEndSession" => true
-        }
-    }
+    |> make_response
+  end
+
+  def process_request(conn, %{"request" => %{"intent" => %{"name" => "Elixir"}}}) do
+    Enum.random([
+        "Elixir is an amazing programming language.",
+        "Don't you just love pattern matching?",
+        "Binaries are amazing!",
+        "Macros really help remove boilerplate from your code.",
+        "The tooling in Elixir is fantastic.",
+        "Elixir: built on the shoulders of giants",
+      ])
+    |> make_response
   end
 
   def alexa(conn, params) do
