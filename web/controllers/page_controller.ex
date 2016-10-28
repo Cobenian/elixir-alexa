@@ -40,6 +40,10 @@ defmodule Alexa.PageController do
     |> make_response
   end
 
+  def process_request(conn, _params) do
+    "I did not understand what you said.  Clearly you made a mistake not me." |> make_response
+  end
+
   def alexa(conn, params) do
     IO.puts "called with:"
     IO.inspect params
