@@ -17,7 +17,7 @@ defmodule Alexa.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Alexa, []},
-     applications: [:ssl, :phoenix, :phoenix_html, :cowboy, :logger, :gettext]]
+     applications: [:ssl, :phoenix, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_pubsub, :erlware_commons]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,6 +37,7 @@ defmodule Alexa.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:exrm, "~> 1.0"},
+     {:erlware_commons, "~> 0.21.0", override: true},
     ]
   end
 end
